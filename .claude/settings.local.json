@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.skeleton.dev)",
+      "Bash(npx sv create:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "WebSearch"
+    ]
+  }
+}
