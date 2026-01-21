@@ -6,7 +6,30 @@
       "Bash(npm init:*)",
       "Bash(npm install)",
       "Bash(npm run build:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(curl:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npm run screenshot:*)",
+      "Bash(pkill:*)",
+      "Bash(taskkill:*)",
+      "Bash(timeout /t 5 /nobreak:*)",
+      "Bash(timeout /t 8 /nobreak)",
+      "Bash(powershell -Command \"Start-Sleep -Seconds 8\")",
+      "Bash(npm run dev:*)",
+      "Bash(powershell -Command \"Start-Sleep -Seconds 5; Invoke-WebRequest -Uri ''http://localhost:5173'' -UseBasicParsing -TimeoutSec 5 | Select-Object -ExpandProperty StatusCode\")",
+      "Bash(node scripts/capture-screenshot.js:*)",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_close"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
 }

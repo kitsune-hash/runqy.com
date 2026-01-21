@@ -1,5 +1,6 @@
 <script lang="ts">
 	// Landing page for runqy - distributed task queue system
+	import ArchitectureDiagram from '$lib/components/diagram/ArchitectureDiagram.svelte';
 </script>
 
 <svelte:head>
@@ -75,25 +76,12 @@
 		<!-- Architecture Overview -->
 		<section class="container mx-auto px-4 py-24">
 			<h2 class="text-3xl font-bold text-white text-center mb-8">Architecture</h2>
-			<div class="max-w-4xl mx-auto">
-				<pre class="card preset-filled-surface-800 p-6 text-sm text-surface-200 overflow-x-auto">
-{`┌─────────────────────┐    ┌─────────────────┐    ┌───────────────┐
-│ runqy-server        │    │     Redis       │    │   Clients     │
-│                     │───→│                 │←───│   (enqueue)   │
-│ POST /worker/       │    │ - Task queues   │    │               │
-│   register          │    │ - Worker state  │    │               │
-└─────────────────────┘    └─────────────────┘    └───────────────┘
-         │                         ↑
-         │ config + deployment     │ dequeue/heartbeat
-         ↓                         │
-┌──────────────────────────────────────────────────────────────────┐
-│                      runqy-worker (Go)                           │
-│  1. Register → receive Redis creds + git repo                    │
-│  2. Clone deployment code, create virtualenv                     │
-│  3. Spawn Python process, wait for ready signal                  │
-│  4. Dequeue tasks, forward to Python via stdin/stdout            │
-└──────────────────────────────────────────────────────────────────┘`}
-				</pre>
+			<p class="text-center text-surface-300 mb-8 max-w-2xl mx-auto">
+				Tasks flow from clients through the central server to distributed workers.
+				Each worker type handles specific workloads—from local laptops to cloud instances and GPU clusters.
+			</p>
+			<div class="w-full max-w-7xl mx-auto">
+				<ArchitectureDiagram />
 			</div>
 		</section>
 
