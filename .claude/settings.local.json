@@ -29,7 +29,9 @@
       "Bash(timeout:*)",
       "mcp__playwright__browser_press_key",
       "Bash(xargs cat:*)",
-      "Bash(npm run check:*)"
+      "Bash(npm run check:*)",
+      "Bash(git merge:*)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
