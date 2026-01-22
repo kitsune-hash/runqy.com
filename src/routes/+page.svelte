@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ArchitectureDiagram from '$lib/components/diagram/ArchitectureDiagram.svelte';
 	import BootstrapDiagram from '$lib/components/diagram/BootstrapDiagram.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 </script>
 
 <svelte:head>
@@ -12,7 +13,10 @@
 	<!-- Header -->
 	<header class="container mx-auto px-4 py-6">
 		<nav class="flex items-center justify-between">
-			<div class="text-2xl font-bold text-white">runqy</div>
+			<div class="flex items-center gap-2">
+				<Logo size={32} />
+				<span class="text-2xl font-bold text-white">runqy</span>
+			</div>
 			<div class="flex gap-4">
 				<a href="https://docs.runqy.com" class="btn preset-filled-primary-500">
 					Docs
