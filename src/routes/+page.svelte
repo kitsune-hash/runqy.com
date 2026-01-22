@@ -2,6 +2,7 @@
 	import ArchitectureDiagram from '$lib/components/diagram/ArchitectureDiagram.svelte';
 	import BootstrapDiagram from '$lib/components/diagram/BootstrapDiagram.svelte';
 	import Logo from '$lib/components/Logo.svelte';
+	import TaskFlowBackground from '$lib/components/TaskFlowBackground.svelte';
 </script>
 
 <svelte:head>
@@ -30,23 +31,45 @@
 
 	<main>
 		<!-- Hero -->
-		<section class="container mx-auto px-4 py-24 text-center">
-			<h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
-				Your workers, your machines,<br />
-				<span class="text-primary-500">your rules.</span>
-			</h1>
-			<p class="text-xl text-surface-300 max-w-2xl mx-auto mb-8">
-				The open-source distributed task queue.
-				From simple scripts to GPU-intensive inference—your workers handle it all.
-				Runqy distributes the tasks.
-			</p>
-			<div class="flex gap-4 justify-center">
-				<a href="https://docs.runqy.com" class="btn preset-filled-primary-500 text-lg px-8 py-3">
-					Get Started
-				</a>
-				<a href="https://github.com/Publikey/runqy" class="btn preset-tonal-primary text-lg px-8 py-3" target="_blank" rel="noopener">
-					View on GitHub
-				</a>
+		<section class="relative overflow-hidden">
+			<TaskFlowBackground />
+
+			<div class="relative z-10 container mx-auto px-4 py-28 md:py-36 text-center">
+				<h1
+					class="animate-fade-in-up text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
+				>
+					Your workers, your machines,<br />
+					<span
+						class="bg-gradient-to-r from-cyan-400 via-primary-400 to-violet-500 bg-clip-text text-transparent"
+					>
+						your rules.
+					</span>
+				</h1>
+
+				<p
+					class="animate-fade-in-up text-xl text-surface-300 max-w-2xl mx-auto mb-10"
+					style="animation-delay: 200ms;"
+				>
+					The open-source distributed task queue. From simple scripts to GPU-intensive
+					inference—your workers handle it all. Runqy distributes the tasks.
+				</p>
+
+				<div class="animate-fade-in-up flex gap-4 justify-center" style="animation-delay: 400ms;">
+					<a
+						href="https://docs.runqy.com"
+						class="btn preset-filled-primary-500 text-lg px-8 py-3 hover:scale-105 hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-200"
+					>
+						Get Started
+					</a>
+					<a
+						href="https://github.com/Publikey/runqy"
+						class="btn preset-tonal-primary text-lg px-8 py-3 hover:scale-105 transition-all duration-200"
+						target="_blank"
+						rel="noopener"
+					>
+						View on GitHub
+					</a>
+				</div>
 			</div>
 		</section>
 
@@ -89,20 +112,9 @@
 					<div class="text-5xl font-bold text-primary-500 mb-4">3</div>
 					<h3 class="text-xl font-semibold text-white mb-3">Enqueue jobs</h3>
 					<p class="text-surface-300">
-						Via SDK or API. Runqy distributes to available workers. Results come back via callback.
+						Via CLI, SDK, or API. Runqy distributes to available workers. Results come back via callback.
 					</p>
 				</div>
-			</div>
-		</section>
-
-		<!-- Zero-Touch Deployment -->
-		<section class="container mx-auto px-4 py-24 bg-surface-800/30">
-			<h2 class="text-3xl font-bold text-white text-center mb-4">Zero-touch deployment</h2>
-			<p class="text-center text-surface-300 mb-12 max-w-2xl mx-auto">
-				Push code to GitHub. Workers deploy themselves. No SSH. No Docker builds. No CI pipelines to maintain.
-			</p>
-			<div class="w-full max-w-4xl mx-auto">
-				<BootstrapDiagram />
 			</div>
 		</section>
 
@@ -114,6 +126,17 @@
 			</p>
 			<div class="w-full max-w-7xl mx-auto">
 				<ArchitectureDiagram />
+			</div>
+		</section>
+
+		<!-- Zero-Touch Deployment -->
+		<section class="container mx-auto px-4 py-24 bg-surface-800/30">
+			<h2 class="text-3xl font-bold text-white text-center mb-4">Zero-touch deployment</h2>
+			<p class="text-center text-surface-300 mb-12 max-w-2xl mx-auto">
+				Push code to GitHub. Workers deploy themselves. No SSH. No Docker builds. No CI pipelines to maintain.
+			</p>
+			<div class="w-full max-w-4xl mx-auto">
+				<BootstrapDiagram />
 			</div>
 		</section>
 
