@@ -248,7 +248,7 @@
 				Two decorators. One function call. That's all it takes to turn your Python into a distributed worker.
 			</p>
 			<div class="max-w-2xl mx-auto">
-				<pre class="card preset-filled-surface-800 p-6 text-sm overflow-x-auto"><code class="text-surface-200">{`from runqy_task import task, load, run
+				<pre class="card preset-filled-surface-800 p-6 text-sm overflow-x-auto"><code class="text-surface-200">{`from runqy_python import task, load, run
 
 @load
 def setup():
