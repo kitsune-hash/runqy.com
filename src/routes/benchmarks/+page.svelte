@@ -20,6 +20,16 @@
 		}
 	};
 
+	// Batch endpoint benchmark data
+	const batchData = {
+		methods: [
+			{ name: 'HTTP API (single)', throughput: 2963, description: 'One job per HTTP request' },
+			{ name: 'Batch 100', throughput: 12829, description: '100 jobs per batch request' },
+			{ name: 'Batch 500', throughput: 16557, description: '500 jobs per batch request' },
+			{ name: 'Direct Redis bulk', throughput: 83000, description: 'Redis pipeline (theoretical max)' }
+		]
+	};
+
 	// Colors
 	const colors = {
 		runqy: '#06b6d4', // cyan
@@ -219,6 +229,37 @@
 						</div>
 					</div>
 				{/each}
+			</div>
+		</section>
+
+		<!-- Batch Endpoint Throughput -->
+		<section class="mb-16">
+			<h2 class="text-2xl font-bold text-white mb-6">Runqy Batch Endpoint</h2>
+			<p class="text-surface-400 mb-6">
+				For high-volume submissions, Runqy provides a batch endpoint that dramatically increases throughput
+				by amortizing HTTP overhead across multiple jobs.
+			</p>
+
+			<div class="bg-surface-800/30 rounded-lg p-6">
+				<div class="space-y-4">
+					{#each batchData.methods as method}
+						<div class="flex items-center gap-4">
+							<span class="w-40 text-sm text-surface-400">{method.name}</span>
+							<div class="flex-1 bg-surface-700 rounded-full h-7 overflow-hidden">
+								<div
+									class="h-full rounded-full flex items-center justify-end pr-3 text-xs font-medium text-white"
+									style="width: {getBarWidth(method.throughput, 100000)}%; background-color: {colors.runqy}"
+								>
+									{method.throughput.toLocaleString()} jobs/s
+								</div>
+							</div>
+						</div>
+					{/each}
+				</div>
+				<p class="text-surface-500 text-xs mt-4">
+					Batch sizes of 100-500 jobs provide the best balance of throughput and latency.
+					Direct Redis bulk shows the theoretical maximum without HTTP overhead.
+				</p>
 			</div>
 		</section>
 
