@@ -1,18 +1,18 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
 	
-	// Benchmark data - now includes Temporal (real benchmarks)
+	// Benchmark data - direct Redis insertion for fair comparison
 	const benchmarkData = {
 		labels: ['1K Jobs', '10K Jobs', '50K Jobs'],
 		datasets: {
 			throughput: {
-				runqy: [867, 888, 824],
+				runqy: [2921, 3001, 2963],
 				celery: [1049, 1073, 1088],
 				bullmq: [9804, 16978, 24178],
 				temporal: [330, 278, 240]
 			},
 			latencyP99: {
-				runqy: [22.12, 112.80, 251.15],
+				runqy: [66.89, 80.13, 78.61],
 				celery: [81.61, 260.80, 564.93],
 				bullmq: [24.47, 6.60, 9.34],
 				temporal: [201.69, 245.34, 338.80]
