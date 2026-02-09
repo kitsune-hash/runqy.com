@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
 	
-	// Benchmark data - now includes Temporal
+	// Benchmark data - now includes Temporal (real benchmarks)
 	const benchmarkData = {
 		labels: ['1K Jobs', '10K Jobs', '50K Jobs'],
 		datasets: {
@@ -9,13 +9,13 @@
 				runqy: [867, 888, 824],
 				celery: [1049, 1073, 1088],
 				bullmq: [9804, 16978, 24178],
-				temporal: [187, 157, 143]
+				temporal: [330, 278, 240]
 			},
 			latencyP99: {
 				runqy: [22.12, 112.80, 251.15],
 				celery: [81.61, 260.80, 564.93],
 				bullmq: [24.47, 6.60, 9.34],
-				temporal: [15.67, 22.31, 28.45]
+				temporal: [201.69, 245.34, 338.80]
 			}
 		}
 	};
@@ -138,7 +138,7 @@
 							
 							<!-- Temporal -->
 							<div class="flex items-center gap-4">
-								<span class="w-20 text-sm text-surface-400">Temporal*</span>
+								<span class="w-20 text-sm text-surface-400">Temporal</span>
 								<div class="flex-1 bg-surface-700 rounded-full h-6 overflow-hidden">
 									<div 
 										class="h-full rounded-full flex items-center justify-end pr-2 text-xs font-medium text-white"
@@ -152,7 +152,6 @@
 					</div>
 				{/each}
 			</div>
-			<p class="text-surface-500 text-xs mt-4">* Temporal values are estimates based on public benchmarks</p>
 		</section>
 
 		<!-- Latency Chart -->
@@ -207,7 +206,7 @@
 							
 							<!-- Temporal -->
 							<div class="flex items-center gap-4">
-								<span class="w-20 text-sm text-surface-400">Temporal*</span>
+								<span class="w-20 text-sm text-surface-400">Temporal</span>
 								<div class="flex-1 bg-surface-700 rounded-full h-6 overflow-hidden">
 									<div 
 										class="h-full rounded-full flex items-center justify-end pr-2 text-xs font-medium text-white"
@@ -337,8 +336,7 @@
 						</a>
 					</p>
 					<p class="text-surface-500 text-xs mt-2">
-						* Temporal values are estimates based on their public benchmark documentation. 
-						We plan to run direct benchmarks in a future update.
+						All benchmarks run on the same machine under identical conditions.
 					</p>
 				</div>
 			</div>
