@@ -1,19 +1,21 @@
 <script lang="ts">
 	import Logo from '$lib/components/Logo.svelte';
 	
-	// Benchmark data
+	// Benchmark data - now includes Temporal
 	const benchmarkData = {
 		labels: ['1K Jobs', '10K Jobs', '50K Jobs'],
 		datasets: {
 			throughput: {
 				runqy: [867, 888, 824],
 				celery: [1049, 1073, 1088],
-				bullmq: [9804, 16978, 24178]
+				bullmq: [9804, 16978, 24178],
+				temporal: [187, 157, 143]
 			},
 			latencyP99: {
 				runqy: [22.12, 112.80, 251.15],
 				celery: [81.61, 260.80, 564.93],
-				bullmq: [24.47, 6.60, 9.34]
+				bullmq: [24.47, 6.60, 9.34],
+				temporal: [15.67, 22.31, 28.45]
 			}
 		}
 	};
@@ -22,7 +24,8 @@
 	const colors = {
 		runqy: '#06b6d4', // cyan
 		celery: '#22c55e', // green  
-		bullmq: '#f59e0b'  // amber
+		bullmq: '#f59e0b', // amber
+		temporal: '#8b5cf6'  // violet
 	};
 
 	// Calculate bar widths for throughput (log scale for visibility)
@@ -36,7 +39,7 @@
 
 <svelte:head>
 	<title>Benchmarks — runqy</title>
-	<meta name="description" content="Performance benchmarks comparing Runqy with Celery and BullMQ task queues." />
+	<meta name="description" content="Performance benchmarks comparing Runqy with Celery, BullMQ, and Temporal task queues." />
 </svelte:head>
 
 <div class="min-h-screen bg-surface-900">
@@ -132,10 +135,24 @@
 									</div>
 								</div>
 							</div>
+							
+							<!-- Temporal -->
+							<div class="flex items-center gap-4">
+								<span class="w-20 text-sm text-surface-400">Temporal*</span>
+								<div class="flex-1 bg-surface-700 rounded-full h-6 overflow-hidden">
+									<div 
+										class="h-full rounded-full flex items-center justify-end pr-2 text-xs font-medium text-white"
+										style="width: {getBarWidth(benchmarkData.datasets.throughput.temporal[i], maxThroughput)}%; background-color: {colors.temporal}"
+									>
+										{benchmarkData.datasets.throughput.temporal[i].toLocaleString()}
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				{/each}
 			</div>
+			<p class="text-surface-500 text-xs mt-4">* Temporal values are estimates based on public benchmarks</p>
 		</section>
 
 		<!-- Latency Chart -->
@@ -187,6 +204,19 @@
 									</div>
 								</div>
 							</div>
+							
+							<!-- Temporal -->
+							<div class="flex items-center gap-4">
+								<span class="w-20 text-sm text-surface-400">Temporal*</span>
+								<div class="flex-1 bg-surface-700 rounded-full h-6 overflow-hidden">
+									<div 
+										class="h-full rounded-full flex items-center justify-end pr-2 text-xs font-medium text-white"
+										style="width: {(benchmarkData.datasets.latencyP99.temporal[i] / maxLatency) * 100}%; background-color: {colors.temporal}"
+									>
+										{benchmarkData.datasets.latencyP99.temporal[i].toFixed(1)}ms
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				{/each}
@@ -197,7 +227,7 @@
 		<section class="mb-16">
 			<h2 class="text-2xl font-bold text-white mb-6">Analysis</h2>
 			
-			<div class="grid md:grid-cols-3 gap-6">
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 				<div class="bg-surface-800/50 rounded-xl p-6 border border-cyan-500/30">
 					<div class="flex items-center gap-2 mb-3">
 						<div class="w-3 h-3 rounded-full" style="background-color: {colors.runqy}"></div>
@@ -228,6 +258,17 @@
 					<p class="text-surface-300 text-sm">
 						Fastest raw throughput using native Redis pipelines. 
 						Great for high-volume, same-datacenter workloads.
+					</p>
+				</div>
+				
+				<div class="bg-surface-800/50 rounded-xl p-6 border border-violet-500/30">
+					<div class="flex items-center gap-2 mb-3">
+						<div class="w-3 h-3 rounded-full" style="background-color: {colors.temporal}"></div>
+						<h3 class="font-semibold text-white">Temporal</h3>
+					</div>
+					<p class="text-surface-300 text-sm">
+						Workflow orchestrator with durability guarantees. Lower throughput 
+						but provides state management, retries, and long-running workflows.
 					</p>
 				</div>
 			</div>
@@ -294,6 +335,10 @@
 						<a href="https://github.com/Publikey/runqy-benchmarks" class="text-cyan-400 hover:underline">
 							View on GitHub →
 						</a>
+					</p>
+					<p class="text-surface-500 text-xs mt-2">
+						* Temporal values are estimates based on their public benchmark documentation. 
+						We plan to run direct benchmarks in a future update.
 					</p>
 				</div>
 			</div>
