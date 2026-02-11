@@ -22,6 +22,7 @@
 				<a href="#features" class="text-surface-300 hover:text-white transition-colors text-sm">Features</a>
 				<a href="#how-it-works" class="text-surface-300 hover:text-white transition-colors text-sm">How it Works</a>
 				<a href="#use-cases" class="text-surface-300 hover:text-white transition-colors text-sm">Use Cases</a>
+				<a href="/tasks" class="text-surface-300 hover:text-white transition-colors text-sm">Tasks</a>
 				<a href="#comparison" class="text-surface-300 hover:text-white transition-colors text-sm">Compare</a>
 				<a href="/benchmarks" class="text-surface-300 hover:text-white transition-colors text-sm">Benchmarks</a>
 			</div>
@@ -600,6 +601,7 @@ run()`}</code></pre>
 					<h4 class="text-white font-medium mb-3 text-sm">Product</h4>
 					<div class="space-y-2">
 						<a href="#features" class="block text-surface-400 hover:text-white transition-colors text-sm">Features</a>
+						<a href="/tasks" class="block text-surface-400 hover:text-white transition-colors text-sm">Tasks</a>
 						<a href="/benchmarks" class="block text-surface-400 hover:text-white transition-colors text-sm">Benchmarks</a>
 						<a href="#use-cases" class="block text-surface-400 hover:text-white transition-colors text-sm">Use Cases</a>
 						<a href="#comparison" class="block text-surface-400 hover:text-white transition-colors text-sm">Compare</a>
